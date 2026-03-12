@@ -1,45 +1,62 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_upd3576",    // your service ID
+      "template_3xadohk",   // your template ID
+      form.current,
+      "rRhL5xvwo9iD7UWXY"   // your public key
+    ).then(
+      () => {
+        alert("Message sent successfully!");
+      },
+      (error) => {
+        alert("Failed to send message.");
+        console.log(error);
+      }
+    );
+  };
+
   return (
     <section id="contact" style={styles.section}>
       <h2 style={styles.title}>Contact Me</h2>
 
-      <p style={styles.subtitle}>
-        Feel free to reach out if you want to collaborate or have any questions.
-      </p>
+      <form ref={form} onSubmit={sendEmail} style={styles.form}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          style={styles.input}
+          required
+        />
 
-      <div style={styles.container}>
-        <form style={styles.form}>
-          <input
-            type="text"
-            placeholder="Your name"
-            style={styles.input}
-          />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          style={styles.input}
+          required
+        />
 
-          <input
-            type="email"
-            placeholder="Your email"
-            style={styles.input}
-          />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows="5"
+          style={styles.textarea}
+          required
+        />
 
-          <textarea
-            placeholder="Your Message"
-            rows="5"
-            style={styles.textarea}
-          />
-
-          <button type="submit" style={styles.button}>
-            Send Message
-          </button>
-        </form>
-
-        <div style={styles.info}>
-          <h3>Connect With Me</h3>
-          <p>Email: chhiringlhamu61@gmail.com</p>
-          {/* Optional: add social links here */}
-        </div>
-      </div>
+        <button type="submit" style={styles.button}>
+          Send Message
+        </button>
+      </form>
     </section>
   );
 };
@@ -47,32 +64,17 @@ const Contact = () => {
 const styles = {
   section: {
     padding: "80px 20px",
-    backgroundColor: "#ffffff",
     textAlign: "center",
   },
 
   title: {
     fontSize: "36px",
-    marginBottom: "10px",
-  },
-
-  subtitle: {
-    marginBottom: "40px",
-    color: "#555",
-  },
-
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "40px",
-    maxWidth: "900px",
-    margin: "auto",
+    marginBottom: "30px",
   },
 
   form: {
-    flex: "1",
-    minWidth: "280px",
+    maxWidth: "500px",
+    margin: "auto",
     display: "flex",
     flexDirection: "column",
     gap: "15px",
@@ -80,14 +82,14 @@ const styles = {
 
   input: {
     padding: "10px",
-    borderRadius: "6px",
     border: "1px solid #ccc",
+    borderRadius: "6px",
   },
 
   textarea: {
     padding: "10px",
-    borderRadius: "6px",
     border: "1px solid #ccc",
+    borderRadius: "6px",
   },
 
   button: {
@@ -97,12 +99,6 @@ const styles = {
     border: "none",
     borderRadius: "6px",
     cursor: "pointer",
-  },
-
-  info: {
-    flex: "1",
-    minWidth: "250px",
-    textAlign: "left",
   },
 };
 
