@@ -5,7 +5,7 @@ const projects = [
     id: "01", status: "Complete",
     title: "Student Management System",
     desc: "Comprehensive platform to manage student data — profiles, courses, and enrollment — with a clean, efficient interface.",
-    tech: ["Python", "Deep Learning"],
+    tech: ["Python", "Django"],
     github: "https://github.com/Tsering06/Student-managementsystem.git",
   },
   {
@@ -27,7 +27,13 @@ const projects = [
     title: "Personal Portfolio Website",
     desc: "Responsive modern portfolio built with React showcasing projects, skills, and professional journey.",
     tech: ["React", "HTML", "CSS"],
-    github: "https://github.com/Tsering06",
+    github: "https://github.com/Tsering06/portfolio",
+  },
+  {
+    id: "05", status: "Ongoing",
+    title: "Fake news detection",
+    desc: "Classify Nepali news into two cathegories Fake news and Real news using XLM_RoBERTa.",
+    tech: ["JavaScript", "HTML", "CSS"],
   },
 ];
 
