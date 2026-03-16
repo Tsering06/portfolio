@@ -5,7 +5,7 @@ const projects = [
     id: "01", status: "Complete",
     title: "Student Management System",
     desc: "Comprehensive platform to manage student data — profiles, courses, and enrollment — with a clean, efficient interface.",
-    tech: ["Python", "Django"],
+    tech: ["Python"],
     github: "https://github.com/Tsering06/Student-managementsystem.git",
   },
   {
